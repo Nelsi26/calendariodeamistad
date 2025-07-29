@@ -1,0 +1,61 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calendario de Amigas</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Barra lateral con perfiles -->
+  <div class="sidebar">
+    <h3>Perfiles</h3>
+    <div class="profile active" data-color="color1" data-name="Keiry">Keiry</div>
+    <div class="profile" data-color="color2" data-name="Chantel">Chantel</div>
+    <div class="profile" data-color="color3" data-name="Paola">Paola</div>
+    <div class="profile" data-color="color4" data-name="Nelsi">Nelsi</div>
+    <p class="instructions">
+      Selecciona tu perfil y haz clic en una celda para registrar tu actividad.
+    </p>
+  </div>
+
+  <!-- Contenedor del calendario -->
+  <div class="calendar-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Hora</th>
+          <th>Lunes</th>
+          <th>Martes</th>
+          <th>Miércoles</th>
+          <th>Jueves</th>
+          <th>Viernes</th>
+          <th>Sábado</th>
+          <th>Domingo</th>
+        </tr>
+      </thead>
+      <tbody id="calendar-body">
+        <!-- Se llena con JavaScript -->
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- Modal para agregar o editar actividades -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <h3>Agregar o editar actividad</h3>
+      <label for="commentInput">Comentario:</label>
+      <textarea id="commentInput" placeholder="Ej. Libre para llamada"></textarea>
+      <div class="modal-buttons">
+        <button id="cancelBtn" class="cancel">Cancelar</button>
+        <button id="saveBtn">Guardar</button>
+        <button id="deleteBtn" class="delete">Borrar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

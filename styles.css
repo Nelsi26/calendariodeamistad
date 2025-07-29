@@ -1,0 +1,139 @@
+ /* === ESTILOS GENERALES === */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #fdf6f0;
+  display: flex;
+  height: 100vh;
+}
+
+/* === BARRA LATERAL === */
+.sidebar {
+  width: 160px;
+  background: #fffaf5;
+  border-right: 1px solid #ddd;
+  padding: 20px;
+}
+.profile {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+.profile.active {
+  border: 2px solid #888;
+}
+.instructions {
+  font-size: 12px;
+  color: #666;
+  margin-top: 20px;
+}
+
+/* === COLORES POR PERFIL === */
+.profile[data-color="color1"] { background: #fff9ae; color: #665c00; } /* Keiry */
+.profile[data-color="color2"] { background: #cdb4db; color: #4b3869; } /* Chantel */
+.profile[data-color="color3"] { background: #b9fbc0; color: #2d6a4f; } /* Paola */
+.profile[data-color="color4"] { background: #ffccd5; color: #7a2e2e; } /* Nelsi */
+
+.color1 { background: #fff9aecc; color: #665c00; }
+.color2 { background: #cdb4dbcc; color: #4b3869; }
+.color3 { background: #b9fbc0cc; color: #2d6a4f; }
+.color4 { background: #ffccd5cc; color: #7a2e2e; }
+
+/* === CALENDARIO === */
+.calendar-container {
+  flex: 1;
+  overflow-x: auto;
+  padding: 10px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 950px;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 4px;
+  text-align: center;
+  vertical-align: top;
+}
+th {
+  background: #e0f0ff;
+  color: #034078;
+}
+td.hour {
+  background: #f0e9ff;
+  font-weight: bold;
+}
+
+/* === BLOQUES DE ACTIVIDAD === */
+.blocks-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+  max-height: 70px;
+  overflow-y: auto;
+}
+.block {
+  padding: 4px 6px;
+  border-radius: 6px;
+  font-size: 11px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.block .name {
+  font-weight: bold;
+  margin-right: 4px;
+}
+.block .comment {
+  font-style: italic;
+}
+
+/* === MODAL === */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.modal-overlay.active {
+  display: flex;
+}
+.modal {
+  background: #fffaf5;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 320px;
+  width: 90%;
+}
+.modal textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  resize: vertical;
+  font-size: 14px;
+}
+.modal-buttons {
+  text-align: right;
+  margin-top: 15px;
+}
+.modal-buttons button {
+  padding: 8px 14px;
+  margin-left: 6px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.cancel { background-color: #ffccd5; }
+.delete { background-color: #ff6b6b; color: white; }
+#saveBtn { background-color: #b9fbc0; }
+
+
