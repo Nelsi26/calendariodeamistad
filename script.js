@@ -1,4 +1,4 @@
- // === SELECCIÓN DE PERFIL ===
+// === SELECCIÓN DE PERFIL ===
 const profiles = document.querySelectorAll('.profile');
 let activeProfile = {
   name: 'Keiry',
@@ -14,7 +14,6 @@ profiles.forEach(profile => {
     activeProfile.name = profile.dataset.name;
     activeProfile.color = profile.dataset.color;
 
-    // Colores pastel personalizados
     switch (activeProfile.color) {
       case 'color1':
         activeProfile.bgColor = '#fff9aecc'; activeProfile.textColor = '#665c00'; break;
@@ -86,7 +85,7 @@ function createCalendar() {
           currentKey = key;
           const current = scheduleData[key]?.[activeProfile.name];
           commentInput.value = current?.comment || '';
-          modalOverlay.classList.add('active');
+          modal.show();
           commentInput.focus();
         });
 
@@ -99,12 +98,14 @@ function createCalendar() {
 }
 
 // === MODAL ===
-let modalOverlay = document.getElementById('modalOverlay');
-let commentInput = document.getElementById('commentInput');
-let cancelBtn = document.getElementById('cancelBtn');
-let saveBtn = document.getElementById('saveBtn');
-let deleteBtn = document.getElementById('deleteBtn');
+const commentInput = document.getElementById('commentInput');
+const cancelBtn = document.querySelector('.cancel');
+const saveBtn = document.getElementById('saveBtn');
+const deleteBtn = document.getElementById('deleteBtn');
 let currentKey = null;
+
+const modalElement = document.getElementById('activityModal');
+const modal = new bootstrap.Modal(modalElement);
 
 saveBtn.addEventListener('click', () => {
   const comment = commentInput.value.trim();
@@ -128,25 +129,11 @@ deleteBtn.addEventListener('click', () => {
   saveAndRender();
 });
 
-cancelBtn.addEventListener('click', () => {
-  modalOverlay.classList.remove('active');
-  currentKey = null;
-});
-
-window.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
-    modalOverlay.classList.remove('active');
-    currentKey = null;
-  }
-});
-
 function saveAndRender() {
   localStorage.setItem('scheduleData', JSON.stringify(scheduleData));
   createCalendar();
-  modalOverlay.classList.remove('active');
+  modal.hide();
   currentKey = null;
 }
 
 createCalendar();
-
-
