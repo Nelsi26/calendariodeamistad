@@ -137,3 +137,35 @@ function saveAndRender() {
 }
 
 createCalendar();
+
+// === SWIPE PARA OCULTAR/ MOSTRAR SIDEBAR EN MÓVIL ===
+const sidebar = document.querySelector('.sidebar');
+const calendar = document.querySelector('.calendar-container');
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+function handleGesture() {
+  if (window.innerWidth >= 768) return; // Solo en móvil
+
+  const swipeDistance = touchStartX - touchEndX;
+
+  if (swipeDistance > 50) {
+    // Swipe left -> ocultar sidebar
+    sidebar.classList.add('hide-on-scroll');
+    calendar.style.marginLeft = '0';
+  } else if (swipeDistance < -50) {
+    // Swipe right -> mostrar sidebar
+    sidebar.classList.remove('hide-on-scroll');
+    calendar.style.marginLeft = '160px';
+  }
+}
+
+window.addEventListener('touchstart', (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+});
+
+window.addEventListener('touchend', (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  handleGesture();
+});
