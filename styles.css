@@ -1,4 +1,4 @@
- /* === ESTILOS GENERALES === */
+/* === ESTILOS GENERALES === */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -9,11 +9,21 @@ body {
 
 /* === BARRA LATERAL === */
 .sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 160px;
+  height: 100vh;
   background: #fffaf5;
   border-right: 1px solid #ddd;
   padding: 20px;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1040;
 }
+.sidebar.hide-on-scroll {
+  transform: translateX(-100%);
+}
+
 .profile {
   padding: 10px;
   margin-bottom: 10px;
@@ -47,7 +57,15 @@ body {
   flex: 1;
   overflow-x: auto;
   padding: 10px;
+  margin-left: 160px; /* espacio para sidebar */
+  transition: margin-left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
+@media (max-width: 767.98px) {
+  .calendar-container {
+    margin-left: 0;
+  }
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -135,5 +153,3 @@ td.hour {
 .cancel { background-color: #ffccd5; }
 .delete { background-color: #ff6b6b; color: white; }
 #saveBtn { background-color: #b9fbc0; }
-
-
